@@ -1,0 +1,76 @@
+.navWrap {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(11, 12, 16, 0.78);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+  min-width: 220px;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+.brandText .brandName {
+  font-weight: 900;
+  letter-spacing: 0.2px;
+}
+
+.brandText .brandTag {
+  font-size: 12px;
+  opacity: 0.72;
+  margin-top: 2px;
+}
+
+.navLinks {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.navLinks a {
+  color: inherit;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  opacity: 0.88;
+  transition: opacity 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.navLinks a:hover {
+  opacity: 0.72;
+}
+
+.navLinks a.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.14);
+}
