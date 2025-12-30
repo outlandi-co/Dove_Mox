@@ -62,11 +62,14 @@
   border-radius: 12px;
   border: 1px solid transparent;
   opacity: 0.88;
-  transition: opacity 160ms ease, background 160ms ease, border-color 160ms ease;
+  transition: opacity 160ms ease, background 160ms ease, border-color 160ms ease, color 160ms ease;
 }
 
 .navLinks a:hover {
-  opacity: 0.72;
+  opacity: 1;
+  color: #7aa2ff;
+  background: rgba(122, 162, 255, 0.12);
+  border-color: rgba(122, 162, 255, 0.25);
 }
 
 .navLinks a.active {
