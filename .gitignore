@@ -7,10 +7,20 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies / builds
 node_modules
 dist
 dist-ssr
 *.local
+
+# Splash / video source assets (DO NOT COMMIT)
+*.mov
+*.mp4
+public/splash/*.mov
+public/splash/*.mp4
+
+# (Optional) keep WebM if you want it versioned
+# public/splash/*.webm
 
 # Editor directories and files
 .vscode/*
