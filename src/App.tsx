@@ -25,21 +25,30 @@ function Section({
 }
 
 export default function App() {
-  const [showSplash, setShowSplash] = useState(true);
+  useReveal();
 
-  // Optional: only show splash once per tab/session
+  // ✅ Initialize from localStorage (no setState in useEffect)
+  const [showSplash, setShowSplash] = useState(() => {
+    const seen = localStorage.getItem("seenSplash");
+    return seen !== "true";
+  });
+
+  // Optional: ensure first-time splash always starts at #home
   useEffect(() => {
-    const seen = sessionStorage.getItem("seenSplash");
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (seen === "true") setShowSplash(false);
-  }, []);
+    if (showSplash && window.location.hash !== "#home") {
+      window.location.hash = "#home";
+    }
+  }, [showSplash]);
 
   const handleDone = () => {
-    sessionStorage.setItem("seenSplash", "true");
+    localStorage.setItem("seenSplash", "true");
     setShowSplash(false);
-  };
 
-  useReveal();
+    // Land on home after splash
+    if (window.location.hash !== "#home") {
+      window.location.hash = "#home";
+    }
+  };
 
   if (showSplash) {
     return <SplashScreen onDone={handleDone} />;
