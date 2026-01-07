@@ -1,4 +1,6 @@
+import React, { useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
+import SplashScreen from "./components/SplashScreen";
 import { useReveal } from "./hooks/useReveal";
 
 function Section({
@@ -23,7 +25,25 @@ function Section({
 }
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  // Optional: only show splash once per tab/session
+  useEffect(() => {
+    const seen = sessionStorage.getItem("seenSplash");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (seen === "true") setShowSplash(false);
+  }, []);
+
+  const handleDone = () => {
+    sessionStorage.setItem("seenSplash", "true");
+    setShowSplash(false);
+  };
+
   useReveal();
+
+  if (showSplash) {
+    return <SplashScreen onDone={handleDone} />;
+  }
 
   return (
     <div className="page">
@@ -150,7 +170,6 @@ export default function App() {
         </Section>
       </main>
 
-      {/* Sticky CTA */}
       <a className="stickyCta" href="#contact" aria-label="Jump to Contact">
         Contact
       </a>

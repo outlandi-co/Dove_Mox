@@ -1,0 +1,58 @@
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: rgba(11, 12, 16, 0.96);
+
+  opacity: 1;
+  transform: scale(1);
+
+  /* 🎯 staged animation */
+  transition:
+    opacity 120ms ease-out,
+    transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.splash.fadeOut {
+  /* 1️⃣ slight opacity dip first */
+  opacity: 0.75;
+
+  /* 2️⃣ quick, confident scale */
+  transform: scale(1.035);
+
+  pointer-events: none;
+}
+
+/* once opacity starts dropping, complete the fade */
+.splash.fadeOut {
+  transition:
+    opacity 220ms ease-in 80ms,
+    transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.splashVideo {
+  width: min(720px, 90vw);
+  height: auto;
+  display: block;
+}
+
+.splashSkip {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.splashSkip:hover {
+  color: #7aa2ff;
+  background: rgba(122, 162, 255, 0.12);
+  border-color: rgba(122, 162, 255, 0.25);
+}
